@@ -17,5 +17,5 @@ docker push kengz/github-actions
 Run Github Actions container:
 
 - on your the Github Actions host machine, pull the image `docker pull kengz/github-actions`
-- run the container: `docker run --rm -it kengz/github-actions`
+- run the container: `docker run --rm -it run -v /var/run/docker.sock:/var/run/docker.sock kengz/github-actions`
 - go to your `Github repo > Settings > Actions > Add Runner`, run the `Configure` commands as shown there.
