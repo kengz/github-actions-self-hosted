@@ -19,6 +19,7 @@ RUN apt install -y apt-transport-https ca-certificates software-properties-commo
     apt update && \
     apt-cache policy docker-ce && \
     apt install -y docker-ce
+RUN usermod -aG docker ga 
 
 # Install Github Actions runner
 RUN curl -s -O -L https://github.com/actions/runner/releases/download/v2.263.0/actions-runner-linux-x64-2.263.0.tar.gz && \
