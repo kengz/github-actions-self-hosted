@@ -1,5 +1,6 @@
 # self-hosted Github Actions image for Python
-# build: docker build -t kengz/github-actions:0.0.1 -t kengz/github-actions:latest .
+# build: docker build -t kengz/github-actions:0.0.2 -t kengz/github-actions:latest .
+# push: docker push kengz/github-actions:0.0.2; docker push kengz/github-actions:latest
 # run: docker run --rm -it kengz/github-actions:latest
 
 FROM ubuntu:18.04
@@ -11,7 +12,15 @@ RUN apt install -y gcc git python3-dev curl
 RUN useradd -m ga
 WORKDIR /home/ga/actions-runner
 
-# this needs root to run
+# install Docker for some Github Actions to run
+RUN apt install -y apt-transport-https ca-certificates software-properties-common && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && \
+    apt update && \
+    apt-cache policy docker-ce && \
+    apt install -y docker-ce
+
+# Install Github Actions runner
 RUN curl -s -O -L https://github.com/actions/runner/releases/download/v2.263.0/actions-runner-linux-x64-2.263.0.tar.gz && \
     tar xzf ./actions-runner-linux-x64-2.263.0.tar.gz && \
     ./bin/installdependencies.sh
