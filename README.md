@@ -5,11 +5,20 @@ Github Actions self hosted container Dockerfile.
 ## Usage
 
 ### Build
-Build the Docker image:
+
+There are 2 Docker images, with one supporting GPU used for model training:
+- kengz/github-actions
+- kengz/github-actions-gpu
+
+Build and push the images:
 
 ```bash
-docker build -t kengz/github-actions:0.0.1 -t kengz/github-actions:latest .
+# the cpu image
+docker build -t kengz/github-actions:0.0.2 -t kengz/github-actions:latest .
 docker push kengz/github-actions
+# the gpu image
+docker build -f gpu.Dockerfile -t kengz/github-actions-gpu:0.0.2 -t kengz/github-actions-gpu:latest .
+docker push kengz/github-actions-gpu
 ```
 
 ### Run
