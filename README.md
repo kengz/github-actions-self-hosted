@@ -26,5 +26,5 @@ docker push kengz/github-actions-gpu
 Run Github Actions container:
 
 - on your the Github Actions host machine, pull the image `docker pull kengz/github-actions`
-- run the container: `docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock kengz/github-actions`
+- run the container: `docker run --rm --shm-size=8g -it -v /var/run/docker.sock:/var/run/docker.sock kengz/github-actions`
 - go to your `Github repo > Settings > Actions > Add Runner`, run the `Configure` commands as shown there.

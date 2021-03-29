@@ -1,6 +1,6 @@
 # self-hosted Github Actions image for Python
-# build: docker build -t kengz/github-actions:0.0.2 -t kengz/github-actions:latest .
-# push: docker push kengz/github-actions:0.0.2; docker push kengz/github-actions:latest
+# build: docker build -t kengz/github-actions:0.0.3 -t kengz/github-actions:latest .
+# push: docker push kengz/github-actions:0.0.3; docker push kengz/github-actions:latest
 # run: docker run --rm -it kengz/github-actions:latest
 
 FROM ubuntu:20.04
